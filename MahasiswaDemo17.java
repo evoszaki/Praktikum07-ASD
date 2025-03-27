@@ -2,8 +2,11 @@ import java.util.Scanner;
 public class MahasiswaDemo17 {
     public static void main(String[] args) {
         Scanner input17 = new Scanner(System.in);
-        int jumMhs = 5;
-
+       
+        System.out.print("Masukkan jumlah mahasiswa: ");
+        int jumMhs = input17.nextInt(); 
+        input17.nextLine();
+        
         MahasiswaBerprestasi17 list = new MahasiswaBerprestasi17(jumMhs);
 
         for (int i = 0; i < jumMhs; i++) {
@@ -36,7 +39,7 @@ public class MahasiswaDemo17 {
         System.out.println("Menggunakan Binary Search");
         System.out.println("-------------------------------------------------");
         double posisi = list.findBinarySearch(cari, 0, jumMhs - 1);
-        int pss2 = (int) posisi2;
+        int pss2 = (int) posisi;
         list.tampilPosisi(cari, pss2);
         list.tampilDataSearch(cari, pss2);
     }
