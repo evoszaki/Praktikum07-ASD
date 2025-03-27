@@ -36,7 +36,7 @@ public class MahasiswaDemo17 {
         System.out.println("Menggunakan Binary Search");
         System.out.println("-------------------------------------------------");
         double posisi = list.findBinarySearch(cari, 0, jumMhs - 1);
-        int pss2 = (int) posisi;
+        int pss2 = (int) posisi2;
         list.tampilPosisi(cari, pss2);
         list.tampilDataSearch(cari, pss2);
     }
