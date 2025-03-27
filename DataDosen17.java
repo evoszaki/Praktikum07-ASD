@@ -76,22 +76,46 @@ public class DataDosen17 {
         if (!found) {
             System.out.println("Data dosen dengan nama \"" + nama + "\" tidak ditemukan.");
         } else if (count > 1) {
-            System.out.println("Peringatan: Ada lebih dari satu dosen dengan nama \"" + nama + "\".");
+            System.out.println("⚠ Peringatan: Ada lebih dari satu dosen dengan nama \"" + nama + "\".");
         }
     }
 
-    // Pencarian Data Binary berdasarkan Usia
+    // Pencarian Data Binary berdasarkan Usia 
     public void pencarianDataBinary(int usia, int left, int right) {
         sortingASC(); // Binary search hanya bisa dilakukan pada data yang terurut
         int mid;
         boolean found = false;
+        int firstIndex = -1, lastIndex = -1;
+
+        // Binary search utama untuk menemukan satu data
         while (right >= left) {
             mid = (left + right) / 2;
             if (dataDosen17[mid].usia == usia) {
                 found = true;
-                System.out.println("Dosen ditemukan pada indeks " + mid);
-                dataDosen17[mid].tampil();
-                break;
+                firstIndex = mid;
+                lastIndex = mid;
+                
+                // Mencari semua data yang sama di kiri
+                while (firstIndex > 0 && dataDosen17[firstIndex - 1].usia == usia) {
+                    firstIndex--;
+                }
+
+                // Mencari semua data yang sama di kanan
+                while (lastIndex < idx - 1 && dataDosen17[lastIndex + 1].usia == usia) {
+                    lastIndex++;
+                }
+
+                // Menampilkan semua data dengan usia yang sama
+                System.out.println("Data dosen dengan usia " + usia + " ditemukan:");
+                for (int i = firstIndex; i <= lastIndex; i++) {
+                    dataDosen17[i].tampil();
+                }
+
+                // Peringatan jika lebih dari satu data ditemukan
+                if (lastIndex - firstIndex > 0) {
+                    System.out.println("⚠ Peringatan: Ada lebih dari satu dosen dengan usia " + usia + ".");
+                }
+                return;
             } else if (dataDosen17[mid].usia > usia) {
                 right = mid - 1;
             } else {
